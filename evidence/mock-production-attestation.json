@@ -1,0 +1,271 @@
+{
+  "payload": {
+    "schema_version": 1,
+    "attestation_id": "mock-report-worker-remediation-2026-10-17",
+    "evidence_mode": "simulated",
+    "is_production_evidence": false,
+    "production_remediation_status": "NOT_VERIFIED",
+    "execution_authorized": false,
+    "notice": "ILLUSTRATIVE ONLY. Every event, approval, build, deployment, runtime observation, and associated date below is fictional. No candidate fix was applied or deployed. Image digests hash mock label bytes, not OCI artifacts. PyYAML 5.4 is an assumed fix in this example, not an independently verified advisory claim.",
+    "issued_at": "2026-10-17T09:12:00Z",
+    "issuer": "mock://audit-assembler",
+    "scenario_claim": {
+      "status": "MOCK_CLAIM",
+      "finding_id": "F-40219",
+      "cve": "CVE-2020-14343",
+      "package": "PyYAML",
+      "vulnerable_version": "5.3.1",
+      "assumed_remediated_version": "5.4",
+      "remediated_at": "2026-10-17T09:10:00Z",
+      "scope": {
+        "environment": "mock-production",
+        "service": "report-worker",
+        "clusters": [
+          "mock-cluster-a",
+          "mock-cluster-b"
+        ]
+      }
+    },
+    "source": {
+      "repository": "https://github.com/takehome-assignment-bot/homework",
+      "baseline_commit": "7d572752e5cf1340f218639bc5e822e79e998b92",
+      "mock_candidate_commit": "163988274ed88c99745ec6fc36b25ec76de522de",
+      "mock_commit_material": "MOCK candidate source commit for the illustrative PyYAML change; no Git object exists",
+      "candidate_commit_exists": false
+    },
+    "artifacts": {
+      "vulnerable_image": {
+        "reference": "registry.invalid/mock/report-worker@sha256:e6c00718e2206440f88738341818e05031b51a2d2fb4e8dacddbae46697c0f0b",
+        "digest": "sha256:e6c00718e2206440f88738341818e05031b51a2d2fb4e8dacddbae46697c0f0b",
+        "sbom_digest": "sha256:cebcc5f461bc82197e81d6a7ac15ef00f753ce0fa00093dbb7f501f2ed5b7176",
+        "mock_digest_input": "MOCK vulnerable report-worker image bytes; not an OCI image"
+      },
+      "remediated_image": {
+        "reference": "registry.invalid/mock/report-worker@sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3",
+        "digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3",
+        "sbom_digest": "sha256:d69ba820f0b5367c059373cd61523ed08c3eed387b6539626653eb4bae4c62bd",
+        "mock_digest_input": "MOCK remediated report-worker image bytes; not an OCI image"
+      },
+      "vulnerable_sbom": {
+        "digest": "sha256:cebcc5f461bc82197e81d6a7ac15ef00f753ce0fa00093dbb7f501f2ed5b7176",
+        "content": {
+          "format": "MOCK_SBOM_V1",
+          "subject_image_digest": "sha256:e6c00718e2206440f88738341818e05031b51a2d2fb4e8dacddbae46697c0f0b",
+          "packages": [
+            {
+              "name": "PyYAML",
+              "version": "5.3.1"
+            }
+          ],
+          "notice": "Simulated historical dependency inventory, not produced from an image."
+        }
+      },
+      "remediated_sbom": {
+        "digest": "sha256:d69ba820f0b5367c059373cd61523ed08c3eed387b6539626653eb4bae4c62bd",
+        "content": {
+          "format": "MOCK_SBOM_V1",
+          "subject_image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3",
+          "packages": [
+            {
+              "name": "PyYAML",
+              "version": "5.4"
+            }
+          ],
+          "notice": "Simulated dependency inventory, not produced from an image."
+        }
+      }
+    },
+    "evidence": {
+      "proposal": {
+        "id": "mock-proposal-1",
+        "issuer": "mock://proposal-agent",
+        "issued_at": "2026-10-17T08:00:00Z",
+        "status": "MOCK_PROPOSED",
+        "fixture_reference": "fixtures/proposals.json#F-40219",
+        "candidate_plan_digest": "sha256:28cd487c2e352ba4508318c0288818d344ea732a10d488cfb2a42ec9eddaf395",
+        "target_file": "services/report-worker/requirements.lock",
+        "from_version": "5.3.1",
+        "to_version": "5.4"
+      },
+      "validation": {
+        "id": "mock-validation-1",
+        "issuer": "mock://isolated-validator",
+        "issued_at": "2026-10-17T08:10:00Z",
+        "status": "MOCK_PASSED",
+        "proposal_id": "mock-proposal-1",
+        "candidate_plan_digest": "sha256:28cd487c2e352ba4508318c0288818d344ea732a10d488cfb2a42ec9eddaf395",
+        "source_commit": "163988274ed88c99745ec6fc36b25ec76de522de",
+        "build_reference": "mock://ci/build/report-worker-42",
+        "build_issuer": "mock://build-service",
+        "image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3",
+        "sbom_digest": "sha256:d69ba820f0b5367c059373cd61523ed08c3eed387b6539626653eb4bae4c62bd",
+        "assumed_advisory": {
+          "issuer": "mock://security-curator",
+          "cve": "CVE-2020-14343",
+          "package": "PyYAML",
+          "target_version": "5.4",
+          "reference": "https://example.invalid/mock-advisory",
+          "fixture_reference": "fixtures/evidence.json#mock-pyyaml-candidate/advisory",
+          "status": "MOCK_ASSUMPTION"
+        },
+        "checks": [
+          {
+            "name": "dependency_resolution",
+            "status": "MOCK_PASSED",
+            "report_reference": "mock://ci/build/report-worker-42/dependency_resolution",
+            "tool_identity": "mock://validator-tools/v1"
+          },
+          {
+            "name": "tests",
+            "status": "MOCK_PASSED",
+            "report_reference": "mock://ci/build/report-worker-42/tests",
+            "tool_identity": "mock://validator-tools/v1"
+          },
+          {
+            "name": "security_compatibility",
+            "status": "MOCK_PASSED",
+            "report_reference": "mock://ci/build/report-worker-42/security_compatibility",
+            "tool_identity": "mock://validator-tools/v1"
+          },
+          {
+            "name": "change_scope",
+            "status": "MOCK_PASSED",
+            "report_reference": "mock://ci/build/report-worker-42/change_scope",
+            "tool_identity": "mock://validator-tools/v1"
+          }
+        ],
+        "excluded_tests": []
+      },
+      "policy": {
+        "id": "mock-policy-1",
+        "issuer": "mock://deterministic-policy-engine",
+        "issued_at": "2026-10-17T08:15:00Z",
+        "validation_id": "mock-validation-1",
+        "candidate_plan_digest": "sha256:28cd487c2e352ba4508318c0288818d344ea732a10d488cfb2a42ec9eddaf395",
+        "policy_version": "004-v1",
+        "decision": "ACCEPT",
+        "reason_codes": [
+          "LOW_RISK_CRITERIA_MET"
+        ],
+        "evidence_mode": "simulated",
+        "execution_authorized": false,
+        "authorization_scope": "Simulation only. The real harness decision cannot authorize either approval, merge, or deployment below."
+      },
+      "merge_approval": {
+        "id": "mock-merge-approval-1",
+        "issuer": "mock://approval-service",
+        "approved_by": "mock://human/service-owner",
+        "issued_at": "2026-10-17T08:20:00Z",
+        "status": "MOCK_APPROVED",
+        "operation": "merge",
+        "policy_id": "mock-policy-1",
+        "scope": {
+          "repository": "https://github.com/takehome-assignment-bot/homework",
+          "target_branch": "main",
+          "source_commit": "163988274ed88c99745ec6fc36b25ec76de522de",
+          "candidate_plan_digest": "sha256:28cd487c2e352ba4508318c0288818d344ea732a10d488cfb2a42ec9eddaf395"
+        }
+      },
+      "merge": {
+        "id": "mock-merge-1",
+        "issuer": "mock://source-control",
+        "issued_at": "2026-10-17T08:25:00Z",
+        "status": "MOCK_MERGED",
+        "approval_id": "mock-merge-approval-1",
+        "validation_id": "mock-validation-1",
+        "pull_request_reference": "mock://source-control/pull-request/42",
+        "target_branch": "main",
+        "method": "fast_forward",
+        "merged_commit": "163988274ed88c99745ec6fc36b25ec76de522de"
+      },
+      "deployment_approval": {
+        "id": "mock-deploy-approval-1",
+        "issuer": "mock://approval-service",
+        "approved_by": "mock://human/release-owner",
+        "issued_at": "2026-10-17T08:45:00Z",
+        "status": "MOCK_APPROVED",
+        "operation": "deploy",
+        "merge_id": "mock-merge-1",
+        "policy_id": "mock-policy-1",
+        "scope": {
+          "environment": "mock-production",
+          "clusters": [
+            "mock-cluster-a",
+            "mock-cluster-b"
+          ],
+          "service": "report-worker",
+          "image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3"
+        }
+      },
+      "deployment": {
+        "id": "mock-deployment-1",
+        "issuer": "mock://deployment-controller",
+        "issued_at": "2026-10-17T09:00:00Z",
+        "status": "MOCK_ROLLOUT_COMPLETED",
+        "approval_id": "mock-deploy-approval-1",
+        "merge_id": "mock-merge-1",
+        "source_commit": "163988274ed88c99745ec6fc36b25ec76de522de",
+        "image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3",
+        "scope": {
+          "environment": "mock-production",
+          "service": "report-worker",
+          "clusters": [
+            "mock-cluster-a",
+            "mock-cluster-b"
+          ]
+        },
+        "rollout_reference": "mock://deployments/report-worker/rollout-42"
+      },
+      "runtime_verification": {
+        "id": "mock-runtime-verification-1",
+        "issuer": "mock://independent-runtime-inventory",
+        "issued_at": "2026-10-17T09:10:00Z",
+        "status": "MOCK_VERIFIED_WITHIN_SCOPE",
+        "deployment_id": "mock-deployment-1",
+        "scope": {
+          "environment": "mock-production",
+          "service": "report-worker",
+          "clusters": [
+            "mock-cluster-a",
+            "mock-cluster-b"
+          ]
+        },
+        "inventory_reference": "mock://runtime-inventory/snapshots/2026-10-17T09:10:00Z",
+        "observation_kind": "Observed running container image digests, not desired deployment tags",
+        "coverage_status": "MOCK_COMPLETE",
+        "unreachable_inventory_sources": [],
+        "expected_running_instances": 3,
+        "observed_running_instances": 3,
+        "max_age_at_attestation_seconds": 300,
+        "vulnerable_image_digest": "sha256:e6c00718e2206440f88738341818e05031b51a2d2fb4e8dacddbae46697c0f0b",
+        "vulnerable_image_running_count": 0,
+        "remediated_image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3",
+        "remediated_image_running_count": 3,
+        "instances": [
+          {
+            "id": "mock-worker-1",
+            "cluster": "mock-cluster-a",
+            "observed_image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3"
+          },
+          {
+            "id": "mock-worker-2",
+            "cluster": "mock-cluster-a",
+            "observed_image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3"
+          },
+          {
+            "id": "mock-worker-3",
+            "cluster": "mock-cluster-b",
+            "observed_image_digest": "sha256:788893d9719847ff27f99baec85bd28e8de23f2231ce35be795ec80466814fb3"
+          }
+        ]
+      }
+    }
+  },
+  "integrity": {
+    "payload_digest": "sha256:2f05bce5786e3c60ae47bf34bf55082ade06e6cb8af0d87cc0bcd6092bd07992",
+    "canonicalization": "UTF-8 json.dumps(payload, sort_keys=True, separators=(\",\", \":\"), ensure_ascii=True, allow_nan=False)",
+    "authentication_status": "UNSIGNED_MOCK",
+    "signatures": [],
+    "real_verification_design": "Authenticate each event issuer and the assembled payload with a DSSE/in-toto-style signed envelope and an independently maintained issuer/key allowlist. Digest equality alone is not authentication."
+  }
+}

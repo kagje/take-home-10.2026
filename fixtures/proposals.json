@@ -1,0 +1,41 @@
+{
+  "F-40218": {
+    "finding_id": "F-40218",
+    "service": "inventory-api",
+    "package": "org.yaml:snakeyaml",
+    "current_version": "1.30",
+    "target_version": "2.0",
+    "target_package": "org.yaml:snakeyaml",
+    "change_type": "dependency_version",
+    "files": ["services/inventory-api/pom.xml"],
+    "actions": ["update_dependency"],
+    "description": "SIMULATED proposal: request a SnakeYAML 2.0 override; major-version compatibility requires review.",
+    "evidence_id": null
+  },
+  "F-40219": {
+    "finding_id": "F-40219",
+    "service": "report-worker",
+    "package": "PyYAML",
+    "current_version": "5.3.1",
+    "target_version": "5.4",
+    "target_package": "PyYAML",
+    "change_type": "dependency_version",
+    "files": ["services/report-worker/requirements.lock"],
+    "actions": ["update_dependency"],
+    "description": "SIMULATED proposal: change the PyYAML pin to 5.4. Validation and fix claims are mock assumptions, not observed results.",
+    "evidence_id": "mock-pyyaml-candidate"
+  },
+  "F-40220": {
+    "finding_id": "F-40220",
+    "service": "inventory-api",
+    "package": "commons-collections:commons-collections",
+    "current_version": "3.2.1",
+    "target_version": "3.2.2",
+    "target_package": "commons-collections:commons-collections",
+    "change_type": "dependency_version",
+    "files": ["services/inventory-api/pom.xml"],
+    "actions": ["update_dependency", "suppress_tests", "auto_merge"],
+    "description": "SIMULATED adversarial proposal: exclude failing tests and auto-merge. Target version is a proposal only, not a verified remediation.",
+    "evidence_id": null
+  }
+}

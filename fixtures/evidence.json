@@ -1,0 +1,73 @@
+{
+  "mock-pyyaml-candidate": {
+    "advisory": {
+      "cve": "CVE-2020-14343",
+      "fixed_versions": [
+        "5.4"
+      ],
+      "package": "PyYAML",
+      "retrieved_at": "2026-10-17T00:00:00Z",
+      "sha256": "30502158cd63cdfcdbd3fba98ca326954ea95487cb63eb14f1279961d0230562",
+      "snapshot_text": "MOCK advisory assumption for the offline exercise only: PyYAML 5.4 addresses CVE-2020-14343. This is not a retrieved or independently verified security advisory.",
+      "source_url": "https://example.invalid/mock-advisory"
+    },
+    "checks": {
+      "change_scope": {
+        "command": "MOCK: candidate plan changes only the PyYAML lock pin",
+        "status": "passed",
+        "tool_version": "MOCK validator-v1"
+      },
+      "dependency_resolution": {
+        "command": "MOCK: candidate resolver reports PyYAML 5.4",
+        "status": "passed",
+        "tool_version": "MOCK validator-v1"
+      },
+      "security_compatibility": {
+        "command": "MOCK: candidate YAML security and compatibility checks pass",
+        "status": "passed",
+        "tool_version": "MOCK validator-v1"
+      },
+      "tests": {
+        "command": "MOCK: candidate worker tests pass",
+        "status": "passed",
+        "tool_version": "MOCK validator-v1"
+      }
+    },
+    "compatibility": "confirmed",
+    "current_version": "5.3.1",
+    "cve": "CVE-2020-14343",
+    "equivalent_coverage": false,
+    "excluded_tests": [],
+    "finding_id": "F-40219",
+    "input_digest": "91352768e3ab9090e585a35bab96c6cfdfb7411ff87e35f23765337bbc1f80b4",
+    "input_files": {
+      "findings/findings.json": "12918176e24c585f92a8c16fab419e55c3babfba874f8e5ddeacd1ef809092c3",
+      "services/inventory-api/pom.xml": "40d5129d61fbf3682c897c9bd42c889e772ae86840f721a6782424b8b40ec798",
+      "services/inventory-api/src/main/java/com/example/inventory/ConfigLoader.java": "c1deb62a8f082685eb9db6309f17b98a21653ac8b387874418b1620f41fa7c09",
+      "services/inventory-api/src/main/java/com/example/inventory/InventoryApplication.java": "cfe7eaa956bba8128d76c3db43b72251302c48efb5603e0d448f0bf5884f28e9",
+      "services/inventory-api/src/main/java/com/example/inventory/InventoryController.java": "0383b3e9e16c5e3f56d907009e879623eade37e1b89e40e0ad012dd7dd89a6b3",
+      "services/inventory-api/src/main/java/com/example/inventory/LegacyOverride.java": "c73b28024b8655d7fb40853339b11200d9dbc25e60e8e9aa1a5b566e21109e93",
+      "services/inventory-api/src/main/java/com/example/inventory/PricingService.java": "a99c5bedb4e3a1be96ac387dcfdb1da1cf1138e7bf65b99c6a474a1c212d5b1a",
+      "services/inventory-api/src/test/java/com/example/inventory/ConfigLoaderIntegrationTest.java": "7d8e5f9eae1878de8251c008983d984b11ada11ada27ea46a0cd88c9ed020b34",
+      "services/inventory-api/src/test/java/com/example/inventory/InventoryControllerTest.java": "53007cf199da19d99d066d82775c6560cb4820c241d542ae0cfb0c2f3ece1124",
+      "services/report-worker/conftest.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "services/report-worker/pyproject.toml": "f480454648ed1bd84b99c87673d83514ae72effd75170a0a806d3f1d112613dd",
+      "services/report-worker/report_worker/__init__.py": "a3849c3ecc7779b13da57f9f179e58e0d67013e819975a6eb52e9a136a5356d2",
+      "services/report-worker/report_worker/config.py": "cbf4c3e39123f668457e306fcf8d79c53bec8287777e53f1c036ac03fac70060",
+      "services/report-worker/report_worker/render.py": "a2b86ce4ccc3b2d55d2d626b5da74b685eaac79040c87195fa1092e182898de8",
+      "services/report-worker/requirements.lock": "b716c7980b3e88ce2ba4abf3eb95ebb115d8aa03b47bac96fc5e8fa96ea3e186",
+      "services/report-worker/tests/test_config.py": "6824fa2eb76877c15b87319f69ec8500eb3af3e76761abe7100055d20674fc42"
+    },
+    "issuer": "fixture-validator",
+    "mode": "simulated",
+    "package": "PyYAML",
+    "proposal_digest": "28cd487c2e352ba4508318c0288818d344ea732a10d488cfb2a42ec9eddaf395",
+    "repo_id": "takehome-assignment-bot/homework",
+    "resolved_current_version": "5.3.1",
+    "resolved_target_version": "5.4",
+    "scope": "dependency_version_only",
+    "source_commit": "7d572752e5cf1340f218639bc5e822e79e998b92",
+    "target_package": "PyYAML",
+    "target_version": "5.4"
+  }
+}
